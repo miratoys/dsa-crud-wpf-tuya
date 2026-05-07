@@ -1,0 +1,51 @@
+﻿<Window x:Class="listyeah.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:listyeah"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="451" Width="800">
+
+    <Grid>
+        <Grid.Background>
+            <RadialGradientBrush>
+                <GradientStop Color="#FFAFA0E6" Offset="1"/>
+                <GradientStop Color="#FFF5BBF0" Offset="0"/>
+            </RadialGradientBrush>
+        </Grid.Background>
+        <DataGrid x:Name="Menu" ItemsSource="{Binding Employees}" AutoGenerateColumns="False"  Margin="308,59,28,66" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="*"/>
+                <DataGridTextColumn Header="Department" Binding="{Binding Department}" Width="*"/>
+                <DataGridTextColumn Header="Salary" Binding="{Binding Salary}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock HorizontalAlignment="Left" Height="40" Margin="419,10,0,0" TextWrapping="Wrap" Text="Employee" VerticalAlignment="Top" Width="271" FontSize="26" FontFamily="Goudy Stout">
+            <TextBlock.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FF3F2C9C" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBlock.Foreground>
+        </TextBlock>
+        <TextBox Name="User" HorizontalAlignment="Left" Height="26" Margin="24,59,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="261" />
+        <TextBlock HorizontalAlignment="Left" Height="19" Margin="24,40,0,0" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Width="171" FontSize="13"/>
+        <TextBox Name="Naming" HorizontalAlignment="Left" Height="26" Margin="24,119,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="261"/>
+        <TextBlock HorizontalAlignment="Left" Height="19" Margin="24,100,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="171" FontSize="13"/>
+        <TextBlock HorizontalAlignment="Left" Height="19" Margin="24,167,0,0" TextWrapping="Wrap" Text="Title" VerticalAlignment="Top" Width="171" FontSize="13"/>
+        <TextBox Name="Sub" HorizontalAlignment="Left" Height="26" Margin="24,186,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="261"/>
+        <TextBlock HorizontalAlignment="Left" Height="19" Margin="24,235,0,0" TextWrapping="Wrap" Text="Department" VerticalAlignment="Top" Width="171" FontSize="13"/>
+        <TextBox Name="Office" HorizontalAlignment="Left" Height="26" Margin="24,254,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="261" />
+        <TextBlock HorizontalAlignment="Left" Height="19" Margin="24,305,0,0" TextWrapping="Wrap" Text="Salary" VerticalAlignment="Top" Width="171" FontSize="13"/>
+        <TextBox Name="Money" HorizontalAlignment="Left" Height="26" Margin="24,324,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="261" />
+        <Button Content="Remove" HorizontalAlignment="Left" Height="27" Margin="419,377,0,0" VerticalAlignment="Top" Width="108" Background="#FF5478E8" Click="RemoveButton_Click"/>
+       
+        <Button Content="Update" HorizontalAlignment="Left" Height="27" Margin="540,377,0,0" VerticalAlignment="Top" Width="109" Background="#FF5478E8" Click="UpdateButton_Click"/>
+        <Button Content="Clear" HorizontalAlignment="Left" Height="27" Margin="663,377,0,0" VerticalAlignment="Top" Width="109" Background="#FF5478E8" Click="ClearButton_Click"/>
+        <Button Content="Add" HorizontalAlignment="Left" Height="27" Margin="292,377,0,0" VerticalAlignment="Top" Width="108" Background="#FF5478E8" Click="AddBtn_Click" RenderTransformOrigin="-0.211,0.382"/>
+    </Grid>
+</Window>
+

@@ -1,0 +1,16 @@
+C:\Users\25-020s\source\repos\listyeah\listyeah\obj\Debug\listyeah.csproj.AssemblyReference.cache
+C:\Users\25-020s\source\repos\listyeah\listyeah\obj\Debug\MainWindow.g.cs
+C:\Users\25-020s\source\repos\listyeah\listyeah\obj\Debug\App.g.cs
+C:\Users\25-020s\source\repos\listyeah\listyeah\obj\Debug\listyeah_MarkupCompile.cache
+C:\Users\25-020s\source\repos\listyeah\listyeah\obj\Debug\listyeah_MarkupCompile.lref
+C:\Users\25-020s\source\repos\listyeah\listyeah\bin\Debug\listyeah.exe.config
+C:\Users\25-020s\source\repos\listyeah\listyeah\bin\Debug\listyeah.exe
+C:\Users\25-020s\source\repos\listyeah\listyeah\bin\Debug\listyeah.pdb
+C:\Users\25-020s\source\repos\listyeah\listyeah\obj\Debug\MainWindow.baml
+C:\Users\25-020s\source\repos\listyeah\listyeah\obj\Debug\listyeah.g.resources
+C:\Users\25-020s\source\repos\listyeah\listyeah\obj\Debug\listyeah.Properties.Resources.resources
+C:\Users\25-020s\source\repos\listyeah\listyeah\obj\Debug\listyeah.csproj.GenerateResource.cache
+C:\Users\25-020s\source\repos\listyeah\listyeah\obj\Debug\listyeah.csproj.CoreCompileInputs.cache
+C:\Users\25-020s\source\repos\listyeah\listyeah\obj\Debug\listyeah.exe
+C:\Users\25-020s\source\repos\listyeah\listyeah\obj\Debug\listyeah.pdb
+C:\Users\25-020s\source\repos\listyeah\listyeah\obj\Debug\listyeah.exe.config
