@@ -1,0 +1,9 @@
+C:\Users\25-020s\Downloads\Midexam\Midterms\Midterms\obj\Debug\Midterms.csproj.AssemblyReference.cache
+C:\Users\25-020s\Downloads\Midexam\Midterms\Midterms\obj\Debug\MainWindow.baml
+C:\Users\25-020s\Downloads\Midexam\Midterms\Midterms\obj\Debug\MainWindow.g.cs
+C:\Users\25-020s\Downloads\Midexam\Midterms\Midterms\obj\Debug\App.g.cs
+C:\Users\25-020s\Downloads\Midexam\Midterms\Midterms\obj\Debug\Midterms_MarkupCompile.cache
+C:\Users\25-020s\Downloads\Midexam\Midterms\Midterms\obj\Debug\Midterms.g.resources
+C:\Users\25-020s\Downloads\Midexam\Midterms\Midterms\obj\Debug\Midterms.Properties.Resources.resources
+C:\Users\25-020s\Downloads\Midexam\Midterms\Midterms\obj\Debug\Midterms.csproj.GenerateResource.cache
+C:\Users\25-020s\Downloads\Midexam\Midterms\Midterms\obj\Debug\Midterms.csproj.CoreCompileInputs.cache
