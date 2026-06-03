@@ -12,55 +12,50 @@
                 <GradientStop Color="#FFF5BBF0" Offset="0"/>
             </RadialGradientBrush>
         </Grid.Background>
-        <DataGrid Name="cart" ItemsSource="{Binding shoppings}" AutoGenerateColumns="False"  Margin="10,46,410,217" >
+
+        
+        <DataGrid Name="cart" ItemsSource="{Binding shoppings}" AutoGenerateColumns="False"  
+                  Margin="69,27,69,264" SelectionChanged="cart_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="30"/>
-                <DataGridTextColumn Header="NAME" Binding="{Binding NAME}" Width="70"/>
-                <DataGridTextColumn Header="DESCRIPTION" Binding="{Binding DESCRIPTION}" Width="110"/>
-                <DataGridTextColumn Header="PRICE" Binding="{Binding PRICE}" Width="70"/>
-                <DataGridTextColumn Header=" " Width="*" />
-            </DataGrid.Columns>
-        </DataGrid>
-        <TextBlock HorizontalAlignment="Left" Height="30" Margin="29,23,0,0" TextWrapping="Wrap" Text="Available Products Section" VerticalAlignment="Top" Width="370" FontSize="12" FontFamily="Goudy Stout"/>
-        <TextBlock HorizontalAlignment="Left" Height="30" Margin="451,23,0,0" TextWrapping="Wrap" Text="Shopping Cart Section" VerticalAlignment="Top" Width="370" FontSize="12" FontFamily="Goudy Stout"/>
-        <DataGrid x:Name="Addcart" ItemsSource="{Binding Shoppings}" AutoGenerateColumns="False"  Margin="405,46,10,217" >
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="30"/>
-                <DataGridTextColumn Header="NAME" Binding="{Binding NAME}" Width="70"/>
-                <DataGridTextColumn Header="DESCRIPTION" Binding="{Binding DESCRIPTION}" Width="110"/>
-                <DataGridTextColumn Header="PRICE" Binding="{Binding PRICE}" Width="70"/>
+                <DataGridTextColumn Header="NAME" Binding="{Binding Name}" Width="100"/>
+                <DataGridTextColumn Header="DESCRIPTION" Binding="{Binding Description}" Width="250"/>
+                <DataGridTextColumn Header="PRICE" Binding="{Binding Price}" Width="70"/>
                 <DataGridTextColumn Header=" " Width="*" />
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Content="Remove" HorizontalAlignment="Left" Height="27" Margin="646,247,0,0" VerticalAlignment="Top" Width="108" Background="#FF5478E8" Click="RemoveButton_Click" RenderTransformOrigin="0.039,1.076"/>
-        <Button Content="Add to Cart" HorizontalAlignment="Left" Height="27" Margin="451,247,0,0" VerticalAlignment="Top" Width="110" Background="#FF5478E8" Click="UpdateButton_Click" RenderTransformOrigin="0.58,-1.008"/>
-        <Button Content="Clear" HorizontalAlignment="Left" Height="26" Margin="282,388,0,0" VerticalAlignment="Top" Width="108" Background="#FF5478E8" Click="ClearButton_Click"/>
-        <Button Content="Add" HorizontalAlignment="Left" Height="28" Margin="122,386,0,0" VerticalAlignment="Top" Width="108" Background="#FF5478E8" Click="AddBtn_Click" RenderTransformOrigin="-0.211,0.382"/>
+        <TextBlock HorizontalAlignment="Left" Height="30" Margin="248,7,0,0" TextWrapping="Wrap" Text="Available Products Section" VerticalAlignment="Top" Width="356" FontSize="12" FontFamily="Goudy Stout"/>
+        <TextBlock HorizontalAlignment="Left" Height="30" Margin="262,181,0,0" TextWrapping="Wrap" Text="Shopping Cart Section" VerticalAlignment="Top" Width="281" FontSize="12" FontFamily="Goudy Stout"/>
 
-        <TextBox Name="Amount" HorizontalAlignment="Left" Height="26" Margin="200,246,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="Amount_TextChanged" />
-        <TextBlock HorizontalAlignment="Left" Height="26" Margin="174,247,0,0" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Width="104" FontSize="15"/>
+       
+        <DataGrid x:Name="Addcart" AutoGenerateColumns="False" Margin="69,202,69,100" SelectionChanged="Addcart_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="30"/>
+                <DataGridTextColumn Header="NAME" Binding="{Binding Name}" Width="100"/>
+                <DataGridTextColumn Header="DESCRIPTION" Binding="{Binding Description}" Width="250"/>
+                <DataGridTextColumn Header="PRICE" Binding="{Binding Price}" Width="70"/>
+                <DataGridTextColumn Header=" " Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
 
-        <TextBox Name="Product" HorizontalAlignment="Left" Height="26" Margin="200,278,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="Product_TextChanged" />
-        <TextBlock HorizontalAlignment="Left" Height="26" Margin="156,280,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="104" FontSize="15"/>
+        <Button Content="Add" HorizontalAlignment="Left" Height="28" Margin="78,392,0,0" VerticalAlignment="Top" Width="90" Background="#FF5478E8" Click="AddBtn_Click"/>
+        <Button Content="Clear" HorizontalAlignment="Left" Height="28" Margin="202,392,0,0" VerticalAlignment="Top" Width="90" Background="#FF5478E8" Click="ClearButton_Click"/>
+        <Button Content="Remove Product" HorizontalAlignment="Left" Height="28" Margin="322,392,0,0" VerticalAlignment="Top" Width="110" Background="#FF5478E8" Click="RemoveButton_Click"/>
+        <Button Content="Add to Cart" HorizontalAlignment="Left" Height="28" Margin="469,392,0,0" VerticalAlignment="Top" Width="110" Background="#FF5478E8" Click="AddtoCartButton_Click"/>
+        <Button Content="Remove From Cart" HorizontalAlignment="Left" Height="28" Margin="609,392,0,0" VerticalAlignment="Top" Width="120" Background="#FF5478E8" Click="RemoveFromCartButton_Click"/>
 
-        <TextBox Name="Details" HorizontalAlignment="Left" Height="26" Margin="200,309,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="Details_TextChanged" />
-        <TextBlock HorizontalAlignment="Left" Height="26" Margin="122,310,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" Width="104" FontSize="15" RenderTransformOrigin="0.546,0.886"/>
+       
+        <TextBox Name="Amount" HorizontalAlignment="Left" Height="26" Margin="63,357,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Height="26" Margin="37,358,0,0" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Width="26" FontSize="15"/>
 
-        <TextBox Name="Presyo" HorizontalAlignment="Left" Height="26" Margin="200,343,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="Presyo_TextChanged" />
-        <TextBlock HorizontalAlignment="Left" Height="26" Margin="163,344,0,0" TextWrapping="Wrap" Text="Price" VerticalAlignment="Top" Width="104" FontSize="15" RenderTransformOrigin="0.546,0.886"/>
+        <TextBox Name="Product" HorizontalAlignment="Left" Height="26" Margin="254,357,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Height="26" Margin="202,358,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="47" FontSize="15"/>
 
+        <TextBox Name="Details" HorizontalAlignment="Left" Height="26" Margin="469,356,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Height="26" Margin="391,357,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" Width="83" FontSize="15"/>
 
-
-
-
-
-
-
-
-
-
-
-
+        <TextBox Name="Presyo" HorizontalAlignment="Left" Height="26" Margin="646,355,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Height="26" Margin="609,356,0,0" TextWrapping="Wrap" Text="Price" VerticalAlignment="Top" Width="37" FontSize="15"/>
     </Grid>
 </Window>

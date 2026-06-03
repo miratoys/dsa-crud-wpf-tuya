@@ -1,29 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Midterms
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        private object cartTable;
-
-        public List<Shopping> shoppings { get; }
-        public object ID {  get; private set; }
+        public ObservableCollection<Shopping> shoppings { get; set; }
+        public ObservableCollection<Shopping> cartItems { get; set; }
 
         public class Shopping
         {
@@ -32,48 +17,54 @@ namespace Midterms
             public string Description { get; set; }
             public int Price { get; set; }
         }
-    
-       public MainWindow()
+
+        public MainWindow()
         {
             InitializeComponent();
 
-            shoppings = new List<Shopping>();
+            shoppings = new ObservableCollection<Shopping>
             {
-                new Shopping { ID = 1, Name = "jabili", Description = "foodie", Price = 300 };
-                new Shopping { ID = 1, Name = "makdwo", Description = "foodie", Price = 200 };
+                new Shopping { ID = 1, Name = "jabili", Description = "foodie", Price = 300 },
+                new Shopping { ID = 2, Name = "makdwo", Description = "foodie", Price = 200 }
             };
-            this.DataContext = this;
 
+            cartItems = new ObservableCollection<Shopping>();
+
+            this.DataContext = this;
+            Addcart.ItemsSource = cartItems;
         }
 
-        private void AddBtn_Click(object sender, RoutedEventArgs e, Menu menu)
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (string.IsNullOrWhiteSpace(Amount.Text) ||
+                string.IsNullOrWhiteSpace(Product.Text) ||
+                string.IsNullOrWhiteSpace(Details.Text) ||
+                string.IsNullOrWhiteSpace(Presyo.Text))
             {
-                if (Amount.Text != " " && Product.Text != " " && Details.Text != " " && Presyo.Text != " ")
-                {
-                    if (int.TryParse(Amount.Text, out int id) && decimal.TryParse(Product.Text, out decimal price))
-                    {
-                        shoppings.Add(new Shopping()
-                        {
-                            ID = id,
-                            Name = Product.Text,
-                            Description = Details.Text,
-                            Price = (int)price,
-                        });
-                        menu.Items.Refresh();
-
-                        Amount.Text = "";
-                        Product.Text = "";
-                        Details.Text = "";
-                        Presyo.Text = "";
-                    }
-                }
-
+                MessageBox.Show("Please fill all fields");
+                return;
             }
-            catch (Exception ex)
+
+            if (int.TryParse(Amount.Text, out int id) && decimal.TryParse(Presyo.Text, out decimal price))
             {
-                MessageBox.Show("Please enter valid values");
+                var newProduct = new Shopping()
+                {
+                    ID = id,
+                    Name = Product.Text,
+                    Description = Details.Text,
+                    Price = (int)price,
+                };
+
+                string msg = $"Add this product?\n\nID: {newProduct.ID}\nName: {newProduct.Name}\nDescription: {newProduct.Description}\nPrice: {newProduct.Price}";
+                if (MessageBox.Show(msg, "Confirm Add Product", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    shoppings.Add(newProduct);
+                    ClearButton_Click(null, null);
+                }
+            }
+            else
+            {
+                MessageBox.Show("ID and Price must be valid numbers");
             }
         }
 
@@ -83,26 +74,93 @@ namespace Midterms
             Product.Text = "";
             Details.Text = "";
             Presyo.Text = "";
-
+            cart.SelectedItem = null;
+            Addcart.SelectedItem = null;
         }
 
-        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        private void AddtoCartButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!(cartTable.SelectItem is Shopping selectShopping))
+            if (cart.SelectedItem is Shopping selectedProduct)
             {
-                MessageBox.Show("Please click a field");
+                string msg = $"Add this product to cart?\n\nID: {selectedProduct.ID}\nName: {selectedProduct.Name}\nDescription: {selectedProduct.Description}\nPrice: {selectedProduct.Price}";
+                if (MessageBox.Show(msg, "Confirm Add to Cart", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    cartItems.Add(new Shopping
+                    {
+                        ID = selectedProduct.ID,
+                        Name = selectedProduct.Name,
+                        Description = selectedProduct.Description,
+                        Price = selectedProduct.Price
+                    });
+                }
             }
             else
             {
-                selectShopping.ID = int.Parse(ID.Text);
-                SelectShopping.Name = Product.Text;
+                MessageBox.Show("Please select an item from Available Products.");
             }
-
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (cart.SelectedItem is Shopping selectedProduct)
+            {
+                string msg = $"Remove this product from Available Products?\n\nID: {selectedProduct.ID}\nName: {selectedProduct.Name}\nDescription: {selectedProduct.Description}\nPrice: {selectedProduct.Price}";
+                if (MessageBox.Show(msg, "Confirm Remove Product", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    shoppings.Remove(selectedProduct);
+                    ClearButton_Click(null, null);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an item from Available Products to remove.");
+            }
         }
+
+        private void RemoveFromCartButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Addcart.SelectedItem is Shopping selectedCartItem)
+            {
+                string msg = $"Remove this product from Shopping Cart?\n\nID: {selectedCartItem.ID}\nName: {selectedCartItem.Name}\nDescription: {selectedCartItem.Description}\nPrice: {selectedCartItem.Price}";
+                if (MessageBox.Show(msg, "Confirm Remove From Cart", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    cartItems.Remove(selectedCartItem);
+                    ClearButton_Click(null, null);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an item from Shopping Cart to remove.");
+            }
+        }
+
+        private void cart_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cart.SelectedItem is Shopping selected)
+            {
+                Addcart.SelectedItem = null;
+                Amount.Text = selected.ID.ToString();
+                Product.Text = selected.Name;
+                Details.Text = selected.Description;
+                Presyo.Text = selected.Price.ToString();
+            }
+        }
+
+        private void Addcart_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (Addcart.SelectedItem is Shopping selected)
+            {
+                cart.SelectedItem = null; 
+                Amount.Text = selected.ID.ToString();
+                Product.Text = selected.Name;
+                Details.Text = selected.Description;
+                Presyo.Text = selected.Price.ToString();
+            }
+        }
+
+        private void Amount_TextChanged(object sender, TextChangedEventArgs e) { }
+        private void Product_TextChanged(object sender, TextChangedEventArgs e) { }
+        private void Details_TextChanged(object sender, TextChangedEventArgs e) { }
+        private void Presyo_TextChanged(object sender, TextChangedEventArgs e) { }
     }
 }
